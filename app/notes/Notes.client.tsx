@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import { fetchNotes } from "../../lib/api";
 import NoteList from "../../components/NoteList/NoteList";
@@ -36,6 +36,7 @@ export default function NotesClient() {
         perPage: PER_PAGE,
         search: debouncedSearch,
       }),
+    placeholderData: keepPreviousData,
   });
 
   const handleSearchChange = (value: string) => {
